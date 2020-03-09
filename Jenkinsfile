@@ -3,11 +3,10 @@ pipeline {
     stages {
         stage('Back-end') {
             agent {
-                docker { image 'maven:3-alpine' }
+                docker { }
             }
             steps {
-                sh 'mvn --version'
-            }
+                sh "docker login -u fabianborn -p ${env.DOCKER_HUB_PASSWORD} "
         }
     }
 }
