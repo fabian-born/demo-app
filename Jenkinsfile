@@ -1,9 +1,4 @@
-podTemplate(containers: [
-    containerTemplate(name: 'docker', image: 'docker', ttyEnabled: true, command: 'cat')
-  ],
-  volumes: [
-    hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
-  ]) {
+{
     node('node'){
         stage("Checkout") {
             echo "hallo Jenkins!"
