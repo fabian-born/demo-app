@@ -5,9 +5,9 @@ podTemplate(label: 'jenkins-pipeline', containers: [
 volumes:[
     hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
 ]){
-   node (‘node‘) {
+   node {
         kubernetes {
-          label 'mylabel'
+          
         }
         stage("Checkout") {
             echo "hallo Jenkins!"
