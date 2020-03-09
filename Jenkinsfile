@@ -1,6 +1,6 @@
 pipeline {  
     environment {
-        registry = "fabianborn/webapp"
+        registry = "fabianborn/demo-app"
         registryCredential = 'docker-hub-cred'
     }  
     agent any
@@ -9,6 +9,7 @@ pipeline {
         steps{
           script {
             echo "build image"
+            docker.build registry + ":$BUILD_NUMBER"
           }
         }
       }
