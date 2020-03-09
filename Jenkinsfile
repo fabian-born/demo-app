@@ -20,7 +20,7 @@ volumes:[
                     usernameVariable: 'DOCKER_HUB_USER',
                     passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
                     
-                        sh "docker login -u ${env.DOCKER_HUB_USER} -p ${env.DOCKER_HUB_PASSWORD}"
+                       // sh "docker login -u ${env.DOCKER_HUB_USER} -p ${env.DOCKER_HUB_PASSWORD}"
                 }
             }
         }
