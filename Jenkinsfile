@@ -1,5 +1,8 @@
-
     node('node'){
+    
+    agent {
+        docker { image 'node:7-alpine' }
+    }
         stage("Checkout") {
             echo "hallo Jenkins!"
         }
