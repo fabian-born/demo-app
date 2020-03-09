@@ -12,6 +12,7 @@ volumes:[
         stage("Checkout") {
             echo "hallo Jenkins!"
         }
+        agent any
         stage("build docker") {
             container('docker') {
                 withCredentials([[$class: 'UsernamePasswordMultiBinding',
