@@ -1,4 +1,4 @@
-podTemplate(label: '', containers: [
+podTemplate(ontainers: [
     containerTemplate(name: 'docker', image: 'docker', ttyEnabled: true, command: 'cat')
   ],
   volumes: [
