@@ -14,7 +14,6 @@ volumes:[
         }
         stage("build docker") {
         
-            container('docker') {
                 withCredentials([[$class: 'UsernamePasswordMultiBinding',
                     credentialsId: 'docker-hub-cred',
                     usernameVariable: 'DOCKER_HUB_USER',
@@ -22,7 +21,6 @@ volumes:[
                     
                        // sh "docker login -u ${env.DOCKER_HUB_USER} -p ${env.DOCKER_HUB_PASSWORD}"
                 }
-            }
         }
     }
 }
