@@ -6,13 +6,14 @@ volumes:[
     hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
 ]){
    node {
+        agent any
         kubernetes {
           
         }
         stage("Checkout") {
             echo "hallo Jenkins!"
         }
-        agent any
+        
         stage("build docker") {
             container('docker') {
                 withCredentials([[$class: 'UsernamePasswordMultiBinding',
