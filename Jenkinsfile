@@ -3,7 +3,7 @@ pipeline {
         registry = "fabianborn/demo-app"
         registryCredential = 'docker-hub-cred'
     }  
-    agent any
+    agent { label 'master' }
     stages {
       stage('Building image') {
         steps{
