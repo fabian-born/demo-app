@@ -1,15 +1,27 @@
-pipeline {
-    agent {
-        docker {
-            image 'maven'
-            args '-v $HOME/.m2:/root/.m2'
+podTemplate(label: 'jenkins-pipeline', containers: [
+    containerTemplate(name: 'jnlp', image: 'lachlanevenson/jnlp-slave:3.10-1-alpine', args: '${computer.jnlpmac} ${computer.name}', workingDir: '/home/jenkins'),
+    containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true)
+],
+volumes:[
+    hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
+]){
+   node('docker') {
+        kubernetes {
+          label 'mylabel'
         }
-    }
-    stages {
-        stage('Build') {
-            steps {
-                sh 'mvn -B'
+        stage("Checkout") {
+            echo "hallo Jenkins!"
+        }
+        stage("build docker") {
+            container('docker') {
+                withCredentials([[$class: 'UsernamePasswordMultiBinding',
+                    credentialsId: 'docker-hub-cred',
+                    usernameVariable: 'DOCKER_HUB_USER',
+                    passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
+                    
+                       // sh "docker login -u ${env.DOCKER_HUB_USER} -p ${env.DOCKER_HUB_PASSWORD}"
+                }
             }
-        }
+        }   
     }
 }
