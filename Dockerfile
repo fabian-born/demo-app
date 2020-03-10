@@ -5,4 +5,4 @@
 
 FROM alpine:3.9.5
 
-apt update
+RUN apk update
