@@ -3,4 +3,6 @@
 # You must either commit your compiled binary into source control (not recommended)
 # or build the binary first as part of a CI/CD pipeline.
 
-FROM alpine:3.5
+FROM alpine:3.9.5
+
+apt update
