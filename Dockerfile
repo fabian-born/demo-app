@@ -7,6 +7,7 @@ FROM alpine:3.5
 
 # We'll likely need to add SSL root certificates
 RUN apk --no-cache add ca-certificates
+RUN apk --no-cache add docker
 
 WORKDIR /usr/local/bin
 
